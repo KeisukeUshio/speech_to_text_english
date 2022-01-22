@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
- 
+
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content "noindex">
@@ -10,66 +10,103 @@
             margin: 1.5rem;
             width: 960px;
         }
+
         .text_area {
-          display: block;
-          width: 800px;
-          height: 160px;
-          margin-top: 40px;
-          margin-left: auto;
-          margin-right: auto;
-          font-size: 30px;
-          font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
-          color: #fff;
-          background-color: black;
+            display: block;
+            width: 800px;
+            height: 160px;
+            margin-top: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 30px;
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+            color: #fff;
+            background-color: black;
         }
+
         .status_area {
-          display: block;
-          width: 800px;
-          height: 80px;
-          margin-top: 40px;
-          margin-left: auto;
-          margin-right: auto;
-          border-color: black;
+            display: block;
+            width: 800px;
+            height: 80px;
+            margin-top: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            border-color: black;
         }
+
         input {
-          display: block;
-          width: 160px;
-          height: 80px;
-          margin-top: 40px;
-          margin-left: auto;
-          margin-right: auto;
-          background-color: white;
-          color: black;
-          font-size:20px;
-          font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;;
-          border-radius: 10px;
+            display: block;
+            width: 160px;
+            height: 80px;
+            margin-top: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+            color: black;
+            font-size: 20px;
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+            border-radius: 10px;
         }
-        </style>
+
+        .control_header {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .log_wrapper {
+            line-height: 150%;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .result_log_area {
+            display: block;
+            box-sizing: border-box;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 800px;
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+            font-size: 100%;
+            color: #AAA;
+        }
+
+        .log_input_wrapper {
+            text-align: right;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .log_input_wrapper input {
+            vertical-align: -1.4px;
+        }
+    </style>
 
     <script>
         var flag_speech = 0;
- 
+
         function vr_function() {
             window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
             var recognition = new webkitSpeechRecognition();
             recognition.lang = 'ja';
             recognition.interimResults = true;
             recognition.continuous = true;
- 
-            recognition.onsoundstart = function() {
+
+            recognition.onsoundstart = function () {
                 document.getElementById('status').innerHTML = "認識中";
             };
-            recognition.onnomatch = function() {
+            recognition.onnomatch = function () {
                 document.getElementById('status').innerHTML = "retry";
             };
-            recognition.onerror = function() {
+            recognition.onerror = function () {
                 document.getElementById('status').innerHTML = "error";
-                if(flag_speech == 0)
-                  vr_function();
+                if (flag_speech == 0)
+                    vr_function();
             };
-            recognition.onsoundend = function() {
+            recognition.onsoundend = function () {
                 document.getElementById('status').innerHTML = "停止中";
-                  vr_function();
+                vr_function();
             };
 
             recognition.onresult = function (event) {
@@ -129,14 +166,15 @@
         }
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                    pageLanguage: 'ja',
-                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-                }, 'google_translate_element');
+                pageLanguage: 'ja',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
         }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
- 
+
 <body>
     <div class="main">
         <div id="result_text" class="text_area" cols="40" rows="3">
@@ -156,5 +194,5 @@
         </div>
     </div>
 </body>
- 
+
 </html>
