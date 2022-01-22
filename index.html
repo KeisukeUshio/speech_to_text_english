@@ -77,7 +77,8 @@
             recognition.start();
         }
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({ 
+            new google.translate.TranslateElement({
+                    pageLanguage: 'ja',
                     layout: google.translate.TranslateElement.InlineLayout.SIMPLE
                 }, 'google_translate_element');
         }
